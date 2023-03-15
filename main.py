@@ -37,7 +37,8 @@ def report():
 
 
 def check_resources(coffe_type):
-
+    """ Checks if there are enough resources for the selected coffee type
+    Raises an exception otherwise"""
     if coffe_type not in MENU:
         raise Exception("Invalid selection")
 
@@ -49,6 +50,8 @@ def check_resources(coffe_type):
 
 
 def payout(coffe_type):
+    """Handles the payment of the coffee. If the amount is not enough it raises an exception
+    If it is correct, it calculates the change and gives it to the user"""
     cents = int(input("Amount of cents coins\n"))
     five_cents = int(input("Amount of 5 cents coins\n"))
     ten_cents = int(input("Amount of 10 cents coins\n"))
@@ -69,6 +72,7 @@ def payout(coffe_type):
 
 
 def confirm_transaction(coffe_type):
+    """Deducts the used ingredientes from the system resources and accounts the money in the balance"""
     for ingredient in MENU[coffe_type]["ingredients"]:
         resources[ingredient] -= MENU[coffe_type]["ingredients"][ingredient]
 
